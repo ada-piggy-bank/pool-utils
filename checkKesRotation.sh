@@ -54,7 +54,7 @@ function validateFiles() {
 
   if [ $(jq -r '.certHash' <<< "$latestEntry") != "$certSum" ]
   then
-     echo "Warning!!! $CERTIFICATE_FILE has changed but counter has not been incremented, check that you have regenerated your $CERTIFICATE_FILE correctly."
+     echo "Warning!!! $CERTIFICATE_FILE has changed but counter has not been incremented. Check that you have regenerated your $CERTIFICATE_FILE correctly."
      SUCCESS="FALSE"
   fi
  
@@ -75,9 +75,13 @@ function checkRotation() {
   then
      #new certificate with valid rotation increment identified
      addNewEntry
-  else
-     #validate existing certificate and kes
+  elif (("$maxRotation" == "$rotationCount")) 
+  then
+   #validate existing certificate and kes
      validateFiles
+  else
+     echo "Warning!!! $CERTIFICATE_FILE contains a lower iteration value than previously recorded. Check that you have regenerated your $CERTIFICATE_FILE correctly."
+     SUCCESS="FALSE"
   fi
 
   if [ "$SUCCESS" = "TRUE" ] 
