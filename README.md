@@ -17,6 +17,9 @@ Use cases covered
 - Node certificate was genereted with read only node.counter file
 - Node certificate was generated with a stale node.counter file (retrieved from backup)
 
+Use cases not covered
+- The node.cert was generated using the wrong kes.vkey (I'll investigate if this is possible to validate)
+
 The script will inspect the node certificate and obtain the current rotation increment. 
 If the increment is greater than the maximum increment in the rotation-history.json file, it will validate the node certificate has not been recorded in the history and that the kes signing key has not been recorded in history. 
 A new record will be added to the history on successful validation.
