@@ -1,7 +1,7 @@
 # pool-utils
 
 ## Kes Rotation Validator
-### Create a pull request and maintain your rotation-history.json file
+### Clonme the reposittory and maintain your rotation-history.json file
 
 A bash script to validate your files after a kes rotation.
 
