@@ -4,7 +4,12 @@
 ### Create a pull request and maintain your rotation-history.json file
 
 A bash script to validate your files after a kes rotation.
-- Usage ./checkKesRotation.sh
+
+Usage
+- Check out to your bp node in same directory as yoru kes and node cert
+- Update the script with your node.cert and kes.skey file locations (relative paths are fine e.g. ../kes.skey)
+- chmod +x checkKesRotation.sh (make the script executable)
+- ./checkKesRotation.sh
 
 Use cases covered
 - Kes file has been regenerated but node certificate was not updated
